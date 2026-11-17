@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 176 176" width="528" height="528" role="img" aria-label="Red Bark Studios cedar tree badge">
+<circle cx="88" cy="88" r="88" fill="#B3321F"/>
+<circle cx="88" cy="88" r="74.5" fill="none" stroke="#F6EFE6" stroke-width="3"/>
+<g transform="translate(52 44.8) scale(0.72)" stroke="#B3321F" stroke-width="3" stroke-linejoin="round" fill="#F6EFE6">
+<path d="M46 98 H54 V118 H46 Z"/>
+<path d="M50 50 L92 102 Q50 94 8 102 Z"/>
+<path d="M50 26 L80 70 Q50 64 20 70 Z"/>
+<path d="M50 4 L70 38 Q50 34 30 38 Z"/>
+</g>
+</svg>

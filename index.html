@@ -8,7 +8,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23b8321f'/%3E%3Cpath d='M20 50V14h14c8 0 12 4 12 10 0 5-3 8-7 9l9 17h-9l-8-16h-3v16z M28 28h5c3 0 5-1 5-4s-2-4-5-4h-5z' fill='%23fff3ea'/%3E%3C/svg%3E">
+<link rel="icon" href="assets/cedar-badge-mark-on-dark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/cedar-badge-mark-on-light.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://redbarkstudios.com/">
+<meta property="og:title" content="RedBarkStudios — Web Design &amp; Clipping">
+<meta property="og:description" content="Fast, sharp websites and short-form clips that get views.">
+<meta property="og:image" content="https://redbarkstudios.com/assets/cedar-badge-lockup-on-light.png">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 :root{
   --bg:#140c0a; --bg2:#1d1210; --card:#24161300; --line:#3a2520; --text:#f6ebe3; --muted:#bfa89c;
@@ -32,7 +39,7 @@ a{color:inherit;text-decoration:none}
 header{position:sticky;top:0;z-index:50;background:rgba(20,12,10,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 nav{display:flex;align-items:center;justify-content:space-between;height:68px}
 .logo{display:flex;align-items:center;gap:10px;font-family:"Bricolage Grotesque";font-weight:800;font-size:20px}
-.logo i{width:30px;height:30px;border-radius:8px;background:linear-gradient(160deg,var(--red),#6e1b0f);display:grid;place-items:center;font-style:normal;font-size:16px;color:var(--cream)}
+.logo img{width:34px;height:34px;display:block}
 .logo span{color:var(--red)}
 .links{display:flex;gap:28px;font-size:15px;color:var(--muted)} .links a:hover{color:var(--text)}
 .menu{display:none;background:none;border:0;color:var(--text);font-size:26px;cursor:pointer}
@@ -68,7 +75,7 @@ section{padding:90px 0}
 .head h2{font-size:clamp(34px,4.5vw,54px)}
 .head p{color:var(--muted);font-size:18px;margin-top:16px}
 
-.services{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .svc{border:1px solid var(--line);border-radius:var(--r);padding:38px;background:linear-gradient(180deg,var(--bg2),var(--bg));position:relative;overflow:hidden}
 .svc::before{content:"";position:absolute;top:-80px;right:-80px;width:220px;height:220px;border-radius:50%;background:radial-gradient(var(--red2),transparent 70%);opacity:.35}
 .svc .ico{width:52px;height:52px;border-radius:14px;background:rgba(217,68,43,.15);color:var(--red);display:grid;place-items:center;margin-bottom:22px}
@@ -115,9 +122,16 @@ label{font-size:13px;color:var(--muted);display:grid;gap:6px}
 input,select,textarea{font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--red)}
 textarea{min-height:120px;resize:vertical}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+#formStatus{margin:0;font-size:14px;min-height:1.2em}
+#formStatus.ok{color:#7fd18b}#formStatus.err{color:#ff8a7a}
+button:disabled{opacity:.6;cursor:wait}
 
 footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:14px}
-footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+footer img{display:block;width:160px;height:auto}
+.brandcard{margin-top:28px;max-width:280px;background:#F6EFE6;border-radius:var(--r);padding:22px}
+.brandcard img{display:block;width:100%;height:auto}
 
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
 .reveal.in{opacity:1;transform:none}
@@ -146,9 +160,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <body>
 <header>
   <nav class="wrap">
-    <a href="#top" class="logo"><i>R</i>RedBark<span>Studios</span></a>
+    <a href="#top" class="logo"><img src="assets/cedar-badge-mark-on-dark.svg" width="34" height="34" alt="">RedBark<span>Studios</span></a>
     <div class="links" id="links">
-      <a href="#services">Services</a><a href="#clipping">Clipping</a><a href="#process">Process</a><a href="#work">Work</a><a href="#faq">FAQ</a>
+      <a href="#services">Services</a><a href="#clipping">Clipping</a><a href="#process">Process</a><a href="#plans">Plans</a><a href="#work">Work</a><a href="#faq">FAQ</a>
     </div>
     <a href="#contact" class="btn btn-red">Start a project</a>
     <button class="menu" id="menu" aria-label="Open menu">☰</button>
@@ -175,7 +189,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
   <section id="services">
     <div class="wrap">
-      <div class="head reveal"><span class="eyebrow">Services</span><h2>Two crafts, one studio.</h2><p>Whether you need a home on the web or more eyes on your content, you get the same thing: sharp work, quick turnaround, no fluff.</p></div>
+      <div class="head reveal"><span class="eyebrow">Services</span><h2>Three ways to work together.</h2><p>Whether you need a home on the web or more eyes on your content, you get the same thing: sharp work, quick turnaround, no fluff.</p></div>
       <div class="services">
         <article class="svc reveal">
           <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg></div>
@@ -199,6 +213,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
             <li>Clipping for Content Rewards & similar campaigns</li>
             <li>Clip packs for creators & brands</li>
             <li>Brief-compliant edits, ready to post</li>
+          </ul>
+        </article>
+        <article class="svc reveal">
+          <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg></div>
+          <h3>Custom Multimedia</h3>
+          <p>Bigger or one-off projects scoped as a clear contract — video, graphics and web work under one roof.</p>
+          <ul>
+            <li>Defined milestones from kickoff to delivery</li>
+            <li>Written acceptance criteria for every deliverable</li>
+            <li>Mix of web, video and design work</li>
+            <li>One point of contact throughout</li>
           </ul>
         </article>
       </div>
@@ -233,7 +258,30 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     </div>
   </section>
 
-  <section id="work" class="band">
+  <section id="plans" class="band">
+    <div class="wrap">
+      <div class="head reveal"><span class="eyebrow">Monthly plans</span><h2>Keep it running, every month.</h2><p>Ongoing support on a simple monthly scope. Every plan is quoted to fit what you need.</p></div>
+      <div class="services">
+        <article class="svc reveal">
+          <h3>Website Care</h3>
+          <p>Your site stays current, backed up and online.</p>
+          <ul><li>Content updates & small edits</li><li>Regular backups</li><li>Uptime checks</li><li>Monthly summary of what was done</li></ul>
+        </article>
+        <article class="svc reveal">
+          <h3>Creator Clipping</h3>
+          <p>A steady flow of short-form clips from your long-form content.</p>
+          <ul><li>Set number of clips each month</li><li>9:16 with captions & hooks</li><li>Revisions included</li><li>Posting available by agreement</li></ul>
+        </article>
+        <article class="svc reveal">
+          <h3>Content Support</h3>
+          <p>An on-call editor for the odds and ends.</p>
+          <ul><li>Set number of edits & exports</li><li>Thumbnails, graphics and cut-downs</li><li>Quick turnaround</li><li>Roll your requests into one place</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
     <div class="wrap">
       <div class="head reveal"><span class="eyebrow">Work</span><h2>Recent projects.</h2><p>A selection of sites and clips. Full portfolio available on request.</p></div>
       <div class="work">
@@ -251,7 +299,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
         <details><summary>How long does a website take?</summary><p>Most small business sites and landing pages take one to three weeks depending on size and how quickly content comes together.</p></details>
         <details><summary>What is clipping?</summary><p>Clipping means cutting the best moments out of long-form content — podcasts, streams, interviews — into short vertical videos. Platforms like Content Rewards pay clippers based on the views those clips earn for the creator or brand.</p></details>
         <details><summary>Can you clip for my own channel?</summary><p>Yes. Send your long-form videos and I'll deliver captioned, ready-to-post clips on a schedule that suits you.</p></details>
-        <details><summary>Do you offer ongoing work?</summary><p>Yes — monthly clip packages and website care (updates, edits, fixes) are both available.</p></details>
+        <details><summary>Do you offer ongoing work?</summary><p>Yes — there are three monthly plans: Website Care (updates, backups, uptime checks, small edits), Creator Clipping (a set number of clips each month) and Content Support (a set number of edits and exports).</p></details>
         <details><summary>How do I pay?</summary><p>You'll get a clear quote up front. Larger web projects are usually split into a deposit and a final payment on launch.</p></details>
       </div>
     </div>
@@ -265,17 +313,23 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
           <h2>Let's make something that gets noticed.</h2>
           <p>Tell me a bit about your project and I'll get back to you within a day.</p>
           <p style="color:var(--text)">📧 <a href="mailto:redbarkstudios@gmail.com" id="email">redbarkstudios@gmail.com</a></p>
+          <div class="brandcard"><img src="assets/cedar-badge-lockup-on-light.svg" alt="RedBarkStudios"></div>
         </div>
-        <form id="form">
+        <form id="form" action="https://formsubmit.co/redbarkstudios@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New project enquiry — RedBarkStudios">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="row">
             <label>Name<input name="name" required></label>
             <label>Email<input name="email" type="email" required></label>
           </div>
           <label>What do you need?
-            <select name="service"><option>Website</option><option>Landing page</option><option>Clipping / clip pack</option><option>Both</option><option>Something else</option></select>
+            <select name="service"><option>Website</option><option>Landing page</option><option>Clipping / clip pack</option><option>Custom multimedia</option><option>Monthly plan</option><option>Something else</option></select>
           </label>
-          <label>Project details<textarea name="msg" required placeholder="Links, goals, timeline, budget…"></textarea></label>
+          <label>Project details<textarea name="message" required placeholder="Links, goals, timeline, budget…"></textarea></label>
           <button class="btn btn-red" type="submit" style="justify-self:start">Send message →</button>
+          <p id="formStatus" role="status" aria-live="polite"></p>
         </form>
       </div>
     </div>
@@ -284,6 +338,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
 <footer>
   <div class="wrap">
+    <img src="assets/cedar-rings-lockup-on-dark.svg" alt="RedBarkStudios">
     <span>© <span id="yr"></span> RedBarkStudios. All rights reserved.</span>
     <span>Web design & short-form clipping</span>
   </div>
@@ -296,12 +351,20 @@ document.getElementById('menu').onclick=()=>links.classList.toggle('open');
 links.querySelectorAll('a').forEach(a=>a.onclick=()=>links.classList.remove('open'));
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-// Opens the visitor's email app with the message filled in. Swap for Formspree/Netlify Forms when hosting.
-document.getElementById('form').onsubmit=e=>{
-  e.preventDefault();const f=new FormData(e.target);
-  const to=document.getElementById('email').textContent;
-  const body=`Name: ${f.get('name')}\nEmail: ${f.get('email')}\nService: ${f.get('service')}\n\n${f.get('msg')}`;
-  location.href=`mailto:${to}?subject=${encodeURIComponent('Project enquiry — '+f.get('service'))}&body=${encodeURIComponent(body)}`;
+// Sends the form to redbarkstudios@gmail.com via FormSubmit (no visitor email app needed).
+const form=document.getElementById("form"),fstat=document.getElementById("formStatus");
+form.onsubmit=async e=>{
+  e.preventDefault();
+  const btn=form.querySelector('button[type=submit]');
+  btn.disabled=true;fstat.className='';fstat.textContent='Sending…';
+  try{
+    const r=await fetch('https://formsubmit.co/ajax/redbarkstudios@gmail.com',{method:'POST',headers:{Accept:'application/json'},body:new FormData(form)});
+    const j=await r.json().catch(()=>({}));
+    if(!r.ok||String(j.success)==='false')throw new Error(j.message||'Send failed');
+    form.reset();fstat.className='ok';fstat.textContent="Thanks — your message is in. I'll reply within a day.";
+  }catch(err){
+    fstat.className='err';fstat.textContent="Couldn't send right now. Please email redbarkstudios@gmail.com directly.";
+  }finally{btn.disabled=false}
 };
 </script>
 </body>
