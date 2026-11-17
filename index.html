@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RedBarkStudios — Web Design & Clipping</title>
+<meta name="description" content="RedBarkStudios builds fast, sharp websites and cuts long-form content into short-form clips that get views.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23b8321f'/%3E%3Cpath d='M20 50V14h14c8 0 12 4 12 10 0 5-3 8-7 9l9 17h-9l-8-16h-3v16z M28 28h5c3 0 5-1 5-4s-2-4-5-4h-5z' fill='%23fff3ea'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#140c0a; --bg2:#1d1210; --card:#24161300; --line:#3a2520; --text:#f6ebe3; --muted:#bfa89c;
+  --red:#d9442b; --red2:#b8321f; --ember:#ff8a4c; --cream:#fff3ea;
+  --r:18px; --max:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html{overflow-x:clip}
+body{background:var(--bg);color:var(--text);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden;overflow-x:clip;
+  background-image:repeating-linear-gradient(92deg,transparent 0 46px,rgba(255,255,255,.012) 46px 48px,transparent 48px 97px,rgba(0,0,0,.18) 97px 99px)}
+h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;line-height:1.05;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:999px;font-weight:600;border:1px solid transparent;transition:.2s;cursor:pointer;font-size:15px}
+.btn-red{background:var(--red);color:var(--cream)} .btn-red:hover{background:var(--ember);color:#1a0d08}
+.btn-ghost{border-color:var(--line);color:var(--text)} .btn-ghost:hover{border-color:var(--red)}
+.eyebrow{display:inline-block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ember);font-weight:600;margin-bottom:14px}
+
+/* nav */
+header{position:sticky;top:0;z-index:50;background:rgba(20,12,10,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-family:"Bricolage Grotesque";font-weight:800;font-size:20px}
+.logo i{width:30px;height:30px;border-radius:8px;background:linear-gradient(160deg,var(--red),#6e1b0f);display:grid;place-items:center;font-style:normal;font-size:16px;color:var(--cream)}
+.logo span{color:var(--red)}
+.links{display:flex;gap:28px;font-size:15px;color:var(--muted)} .links a:hover{color:var(--text)}
+.menu{display:none;background:none;border:0;color:var(--text);font-size:26px;cursor:pointer}
+
+/* hero */
+.hero{padding:90px 0 70px;display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}
+.hero h1{font-size:clamp(44px,7vw,86px);font-weight:800}
+.hero h1 em{font-style:normal;color:var(--red);position:relative}
+.hero p{color:var(--muted);font-size:19px;max-width:540px;margin:24px 0 34px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
+.tags span{font-size:13px;color:var(--muted);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+
+.phones{position:relative;height:500px}
+.phone{position:absolute;width:220px;aspect-ratio:9/16;border-radius:28px;border:6px solid #2b1a16;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.phone:nth-child(1){left:0;top:40px;transform:rotate(-8deg);background:linear-gradient(170deg,#4a1a10,#b8321f 60%,#ff8a4c)}
+.phone:nth-child(2){right:0;top:0;transform:rotate(6deg);background:linear-gradient(200deg,#1f0e0b,#6e1b0f 50%,#d9442b);z-index:2}
+.phone .bar{position:absolute;left:10px;right:10px;top:12px;height:3px;background:rgba(255,255,255,.25);border-radius:3px;overflow:hidden}
+.phone .bar b{display:block;height:100%;background:var(--cream);animation:prog 6s linear infinite}
+.phone:nth-child(2) .bar b{animation-delay:-2.5s}
+@keyframes prog{from{width:0}to{width:100%}}
+.cap{position:absolute;left:14px;right:14px;bottom:70px;text-align:center;font-family:"Bricolage Grotesque";font-weight:800;font-size:22px;line-height:1.1;text-transform:uppercase;text-shadow:0 3px 0 #000}
+.cap mark{background:none;color:#ffe14d}
+.side{position:absolute;right:10px;bottom:120px;display:flex;flex-direction:column;gap:14px}
+.side i{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.18)}
+.play{position:absolute;inset:0;display:grid;place-items:center}
+.play::after{content:"";border-left:26px solid rgba(255,243,234,.9);border-top:16px solid transparent;border-bottom:16px solid transparent;margin-left:6px}
+.play{opacity:.0;transition:.3s} .phone:hover .play{opacity:1}
+
+/* sections */
+section{padding:90px 0}
+.head{max-width:680px;margin-bottom:50px}
+.head h2{font-size:clamp(34px,4.5vw,54px)}
+.head p{color:var(--muted);font-size:18px;margin-top:16px}
+
+.services{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.svc{border:1px solid var(--line);border-radius:var(--r);padding:38px;background:linear-gradient(180deg,var(--bg2),var(--bg));position:relative;overflow:hidden}
+.svc::before{content:"";position:absolute;top:-80px;right:-80px;width:220px;height:220px;border-radius:50%;background:radial-gradient(var(--red2),transparent 70%);opacity:.35}
+.svc .ico{width:52px;height:52px;border-radius:14px;background:rgba(217,68,43,.15);color:var(--red);display:grid;place-items:center;margin-bottom:22px}
+.svc h3{font-size:30px;margin-bottom:12px}
+.svc>p{color:var(--muted);margin-bottom:22px}
+.svc ul{list-style:none;display:grid;gap:10px}
+.svc li{display:flex;gap:10px;align-items:flex-start}
+.svc li::before{content:"";flex:none;width:8px;height:8px;margin-top:9px;border-radius:2px;background:var(--red);transform:rotate(45deg)}
+
+.band{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.platforms{display:flex;flex-wrap:wrap;gap:12px}
+.platforms span{padding:12px 20px;border:1px solid var(--line);border-radius:12px;font-weight:600;background:var(--bg)}
+.clipgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:start}
+.clipgrid p{color:var(--muted);font-size:17px;margin-bottom:18px}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.step{border-top:2px solid var(--line);padding-top:22px;counter-increment:s}
+.step::before{content:"0" counter(s);font-family:"Bricolage Grotesque";font-weight:800;color:var(--red);font-size:15px;letter-spacing:.1em}
+.step h3{font-size:22px;margin:10px 0 8px}
+.step p{color:var(--muted);font-size:15px}
+
+.work{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tile{border-radius:var(--r);border:1px solid var(--line);overflow:hidden;background:var(--bg2)}
+.thumb{aspect-ratio:4/3;display:grid;place-items:center;color:rgba(255,243,234,.55);font-size:14px;letter-spacing:.1em;text-transform:uppercase}
+.tile:nth-child(1) .thumb{background:linear-gradient(135deg,#3b150c,#b8321f)}
+.tile:nth-child(2) .thumb{background:linear-gradient(135deg,#2a1713,#7a4a33)}
+.tile:nth-child(3) .thumb{background:linear-gradient(135deg,#4a1a10,#ff8a4c)}
+.tile .meta{padding:18px 20px}
+.tile h3{font-size:19px} .tile p{color:var(--muted);font-size:14px}
+
+.faq{max-width:820px}
+details{border-bottom:1px solid var(--line);padding:20px 0}
+summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:20px}
+summary::after{content:"+";color:var(--red);font-size:24px;line-height:1;transition:.2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);margin-top:12px}
+
+.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;border:1px solid var(--line);border-radius:28px;padding:56px;background:radial-gradient(circle at 0 0,rgba(217,68,43,.22),transparent 55%),var(--bg2)}
+.contact h2{font-size:clamp(34px,4.5vw,52px)}
+.contact>div>p{color:var(--muted);margin:16px 0}
+form{display:grid;gap:14px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{font-size:13px;color:var(--muted);display:grid;gap:6px}
+input,select,textarea{font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--red)}
+textarea{min-height:120px;resize:vertical}
+
+footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.phone .bar b{animation:none;width:40%}}
+
+@media (max-width:900px){
+  .hero,.clipgrid,.contact{grid-template-columns:1fr}
+  .phones{height:420px;max-width:420px;margin:0 auto;width:100%}
+  .phone{width:180px}
+  .services,.work{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .contact{padding:30px 22px}
+}
+@media (max-width:720px){
+  .wrap{padding:0 16px}
+  .links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line)}
+  .links.open{display:flex} .links a{padding:16px}
+  .menu{display:block} nav .btn{display:none}
+  .hero{padding-top:50px} section{padding:64px 0}
+  .steps,.row{grid-template-columns:1fr}
+  .svc{padding:28px 22px}
+  .phone{width:150px} .phones{height:340px} .cap{font-size:16px;bottom:50px}
+}
+</style>
+</head>
+<body>
+<header>
+  <nav class="wrap">
+    <a href="#top" class="logo"><i>R</i>RedBark<span>Studios</span></a>
+    <div class="links" id="links">
+      <a href="#services">Services</a><a href="#clipping">Clipping</a><a href="#process">Process</a><a href="#work">Work</a><a href="#faq">FAQ</a>
+    </div>
+    <a href="#contact" class="btn btn-red">Start a project</a>
+    <button class="menu" id="menu" aria-label="Open menu">☰</button>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div class="reveal">
+      <span class="eyebrow">Web design · Short-form clipping</span>
+      <h1>Sites that <em>convert.</em> Clips that <em>travel.</em></h1>
+      <p>RedBarkStudios builds clean, fast websites for small businesses and creators — and cuts long-form content into scroll-stopping short-form clips for TikTok, Reels, Shorts and clipping campaigns.</p>
+      <div class="cta">
+        <a href="#contact" class="btn btn-red">Get a quote →</a>
+        <a href="#services" class="btn btn-ghost">See what I do</a>
+      </div>
+      <div class="tags"><span>Custom websites</span><span>Landing pages</span><span>Captioned clips</span><span>Content Rewards campaigns</span></div>
+    </div>
+    <div class="phones reveal" aria-hidden="true">
+      <div class="phone"><div class="bar"><b></b></div><div class="cap">He said <mark>WHAT</mark> on stream?!</div><div class="side"><i></i><i></i><i></i></div><div class="play"></div></div>
+      <div class="phone"><div class="bar"><b></b></div><div class="cap">The <mark>one</mark> habit that changed everything</div><div class="side"><i></i><i></i><i></i></div><div class="play"></div></div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head reveal"><span class="eyebrow">Services</span><h2>Two crafts, one studio.</h2><p>Whether you need a home on the web or more eyes on your content, you get the same thing: sharp work, quick turnaround, no fluff.</p></div>
+      <div class="services">
+        <article class="svc reveal">
+          <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg></div>
+          <h3>Web Design</h3>
+          <p>Modern, mobile-first websites that look premium and load fast — built to turn visitors into customers.</p>
+          <ul>
+            <li>Business sites, portfolios & landing pages</li>
+            <li>Responsive design that works on every screen</li>
+            <li>SEO basics, analytics and contact forms set up</li>
+            <li>Redesigns of outdated sites</li>
+            <li>Hosting & domain setup help</li>
+          </ul>
+        </article>
+        <article class="svc reveal">
+          <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></svg></div>
+          <h3>Clipping</h3>
+          <p>I turn podcasts, streams and long videos into short, hook-first vertical clips built to rack up views.</p>
+          <ul>
+            <li>9:16 clips for TikTok, Reels & YouTube Shorts</li>
+            <li>Bold animated captions and punchy hooks</li>
+            <li>Clipping for Content Rewards & similar campaigns</li>
+            <li>Clip packs for creators & brands</li>
+            <li>Brief-compliant edits, ready to post</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="clipping" class="band">
+    <div class="wrap clipgrid">
+      <div class="reveal">
+        <span class="eyebrow">Clipping</span>
+        <h2 style="font-size:clamp(32px,4vw,48px);margin-bottom:22px">Built for the views economy.</h2>
+        <p>Clipping campaigns pay for performance — so every clip has to earn its spot in the feed. I find the moments worth watching, open with a hook in the first second, and caption everything so it lands with the sound off.</p>
+        <p>Creators and brands: send me your long-form content and get back a steady stream of ready-to-post clips that follow your campaign's rules.</p>
+        <a href="#contact" class="btn btn-red" style="margin-top:8px">Book clipping →</a>
+      </div>
+      <div class="reveal">
+        <p style="color:var(--text);font-weight:600;margin-bottom:14px">Where the clips go</p>
+        <div class="platforms"><span>TikTok</span><span>Instagram Reels</span><span>YouTube Shorts</span><span>X / Twitter</span><span>Content Rewards</span><span>Whop campaigns</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <div class="head reveal"><span class="eyebrow">Process</span><h2>Simple from start to finish.</h2></div>
+      <div class="steps">
+        <div class="step reveal"><h3>Talk</h3><p>Tell me what you need — a site, a clip pack, or an ongoing campaign.</p></div>
+        <div class="step reveal"><h3>Plan</h3><p>I send a clear scope, timeline and price. No surprises.</p></div>
+        <div class="step reveal"><h3>Build</h3><p>Designs or first clips arrive fast, with room for revisions.</p></div>
+        <div class="step reveal"><h3>Launch</h3><p>Your site goes live or your clips go out — and we keep it rolling.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="band">
+    <div class="wrap">
+      <div class="head reveal"><span class="eyebrow">Work</span><h2>Recent projects.</h2><p>A selection of sites and clips. Full portfolio available on request.</p></div>
+      <div class="work">
+        <div class="tile reveal"><div class="thumb">Website project</div><div class="meta"><h3>Project title</h3><p>Web design · Add your project here</p></div></div>
+        <div class="tile reveal"><div class="thumb">Clip campaign</div><div class="meta"><h3>Project title</h3><p>Clipping · Add your project here</p></div></div>
+        <div class="tile reveal"><div class="thumb">Landing page</div><div class="meta"><h3>Project title</h3><p>Web design · Add your project here</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="head reveal"><span class="eyebrow">FAQ</span><h2>Good questions.</h2></div>
+      <div class="faq reveal">
+        <details><summary>How long does a website take?</summary><p>Most small business sites and landing pages take one to three weeks depending on size and how quickly content comes together.</p></details>
+        <details><summary>What is clipping?</summary><p>Clipping means cutting the best moments out of long-form content — podcasts, streams, interviews — into short vertical videos. Platforms like Content Rewards pay clippers based on the views those clips earn for the creator or brand.</p></details>
+        <details><summary>Can you clip for my own channel?</summary><p>Yes. Send your long-form videos and I'll deliver captioned, ready-to-post clips on a schedule that suits you.</p></details>
+        <details><summary>Do you offer ongoing work?</summary><p>Yes — monthly clip packages and website care (updates, edits, fixes) are both available.</p></details>
+        <details><summary>How do I pay?</summary><p>You'll get a clear quote up front. Larger web projects are usually split into a deposit and a final payment on launch.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:20px">
+    <div class="wrap">
+      <div class="contact reveal" id="contact">
+        <div>
+          <span class="eyebrow">Contact</span>
+          <h2>Let's make something that gets noticed.</h2>
+          <p>Tell me a bit about your project and I'll get back to you within a day.</p>
+          <p style="color:var(--text)">📧 <a href="mailto:redbarkstudios@gmail.com" id="email">redbarkstudios@gmail.com</a></p>
+        </div>
+        <form id="form">
+          <div class="row">
+            <label>Name<input name="name" required></label>
+            <label>Email<input name="email" type="email" required></label>
+          </div>
+          <label>What do you need?
+            <select name="service"><option>Website</option><option>Landing page</option><option>Clipping / clip pack</option><option>Both</option><option>Something else</option></select>
+          </label>
+          <label>Project details<textarea name="msg" required placeholder="Links, goals, timeline, budget…"></textarea></label>
+          <button class="btn btn-red" type="submit" style="justify-self:start">Send message →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> RedBarkStudios. All rights reserved.</span>
+    <span>Web design & short-form clipping</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+const links=document.getElementById('links');
+document.getElementById('menu').onclick=()=>links.classList.toggle('open');
+links.querySelectorAll('a').forEach(a=>a.onclick=()=>links.classList.remove('open'));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// Opens the visitor's email app with the message filled in. Swap for Formspree/Netlify Forms when hosting.
+document.getElementById('form').onsubmit=e=>{
+  e.preventDefault();const f=new FormData(e.target);
+  const to=document.getElementById('email').textContent;
+  const body=`Name: ${f.get('name')}\nEmail: ${f.get('email')}\nService: ${f.get('service')}\n\n${f.get('msg')}`;
+  location.href=`mailto:${to}?subject=${encodeURIComponent('Project enquiry — '+f.get('service'))}&body=${encodeURIComponent(body)}`;
+};
+</script>
+</body>
+</html>
