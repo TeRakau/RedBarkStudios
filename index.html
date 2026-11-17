@@ -318,7 +318,8 @@ footer img{display:block;width:160px;height:auto}
         <form id="form" action="https://formsubmit.co/redbarkstudios@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="New project enquiry — RedBarkStudios">
           <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="hidden" name="_next" value="https://redbarkstudios.com/?sent=1#contact">
           <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="row">
             <label>Name<input name="name" required></label>
@@ -351,21 +352,13 @@ document.getElementById('menu').onclick=()=>links.classList.toggle('open');
 links.querySelectorAll('a').forEach(a=>a.onclick=()=>links.classList.remove('open'));
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-// Sends the form to redbarkstudios@gmail.com via FormSubmit (no visitor email app needed).
+// Posts to FormSubmit, which shows a captcha before emailing redbarkstudios@gmail.com, then returns here with ?sent=1.
 const form=document.getElementById("form"),fstat=document.getElementById("formStatus");
-form.onsubmit=async e=>{
-  e.preventDefault();
-  const btn=form.querySelector('button[type=submit]');
-  btn.disabled=true;fstat.className='';fstat.textContent='Sending…';
-  try{
-    const r=await fetch('https://formsubmit.co/ajax/redbarkstudios@gmail.com',{method:'POST',headers:{Accept:'application/json'},body:new FormData(form)});
-    const j=await r.json().catch(()=>({}));
-    if(!r.ok||String(j.success)==='false')throw new Error(j.message||'Send failed');
-    form.reset();fstat.className='ok';fstat.textContent="Thanks — your message is in. I'll reply within a day.";
-  }catch(err){
-    fstat.className='err';fstat.textContent="Couldn't send right now. Please email redbarkstudios@gmail.com directly.";
-  }finally{btn.disabled=false}
-};
+form.onsubmit=()=>{fstat.className='';fstat.textContent='Opening verification…'};
+if(new URLSearchParams(location.search).get('sent')==='1'){
+  fstat.className='ok';fstat.textContent="Thanks — your message is in. I'll reply within a day.";
+  history.replaceState(null,'',location.pathname+'#contact');
+}
 </script>
 </body>
 </html>
