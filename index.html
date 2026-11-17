@@ -318,8 +318,7 @@ footer img{display:block;width:160px;height:auto}
         <form id="form" action="https://formsubmit.co/redbarkstudios@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="New project enquiry — RedBarkStudios">
           <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="true">
-          <input type="hidden" name="_next" value="https://redbarkstudios.com/?sent=1#contact">
+          <input type="hidden" name="_captcha" value="false">
           <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="row">
             <label>Name<input name="name" required></label>
@@ -329,6 +328,7 @@ footer img{display:block;width:160px;height:auto}
             <select name="service"><option>Website</option><option>Landing page</option><option>Clipping / clip pack</option><option>Custom multimedia</option><option>Monthly plan</option><option>Something else</option></select>
           </label>
           <label>Project details<textarea name="message" required placeholder="Links, goals, timeline, budget…"></textarea></label>
+          <label>Quick check: what is <span id="hq"></span>?<input id="human" inputmode="numeric" autocomplete="off" required style="max-width:120px"></label>
           <button class="btn btn-red" type="submit" style="justify-self:start">Send message →</button>
           <p id="formStatus" role="status" aria-live="polite"></p>
         </form>
@@ -352,13 +352,27 @@ document.getElementById('menu').onclick=()=>links.classList.toggle('open');
 links.querySelectorAll('a').forEach(a=>a.onclick=()=>links.classList.remove('open'));
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-// Posts to FormSubmit, which shows a captcha before emailing redbarkstudios@gmail.com, then returns here with ?sent=1.
-const form=document.getElementById("form"),fstat=document.getElementById("formStatus");
-form.onsubmit=()=>{fstat.className='';fstat.textContent='Opening verification…'};
-if(new URLSearchParams(location.search).get('sent')==='1'){
-  fstat.className='ok';fstat.textContent="Thanks — your message is in. I'll reply within a day.";
-  history.replaceState(null,'',location.pathname+'#contact');
-}
+// Sends to FormSubmit's AJAX endpoint. Bot checks: honeypot, minimum fill time, and a random sum.
+const form=document.getElementById("form"),fstat=document.getElementById("formStatus"),human=document.getElementById("human"),hq=document.getElementById("hq");
+const loaded=Date.now();let ans;
+function newQ(){const a=2+Math.floor(Math.random()*8),b=2+Math.floor(Math.random()*8);ans=a+b;hq.textContent=a+' + '+b;human.value=''}
+newQ();
+const say=(cls,msg)=>{fstat.className=cls;fstat.textContent=msg};
+form.onsubmit=async e=>{
+  e.preventDefault();
+  if(form._honey.value)return;
+  if(Date.now()-loaded<3000)return say('err','That was quick. Please take a second and try again.');
+  if(parseInt(human.value,10)!==ans){say('err','The quick check answer is wrong. Try the new one.');newQ();human.focus();return}
+  const btn=form.querySelector('button');btn.disabled=true;say('','Sending…');
+  try{
+    const fd=new FormData(form);
+    const r=await fetch('https://formsubmit.co/ajax/redbarkstudios@gmail.com',{method:'POST',headers:{Accept:'application/json'},body:fd});
+    const j=await r.json().catch(()=>({}));
+    if(r.ok&&String(j.success)==='true'){say('ok',"Thanks — your message is in. I'll reply within a day.");form.reset();newQ()}
+    else say('err',(j.message?j.message+' ':'Something went wrong. ')+'You can also email redbarkstudios@gmail.com directly.');
+  }catch(_){say('err','Could not send. Please email redbarkstudios@gmail.com directly.')}
+  btn.disabled=false;
+};
 </script>
 </body>
 </html>
