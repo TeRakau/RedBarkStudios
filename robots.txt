@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://redbarkstudios.com/sitemap.xml

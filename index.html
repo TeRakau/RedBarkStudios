@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://formsubmit.co; form-action https://formsubmit.co; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RedBarkStudios — Web Design & Clipping</title>
 <meta name="description" content="RedBarkStudios builds fast, sharp websites and cuts long-form content into short-form clips that get views.">
@@ -25,13 +28,12 @@
 <meta name="twitter:image:alt" content="RedBarkStudios — Web Design &amp; Clipping, with the cedar badge logo">
 <style>
 :root{
-  --bg:#140c0a; --bg2:#1d1210; --card:#24161300; --line:#3a2520; --text:#f6ebe3; --muted:#bfa89c;
+  --bg:#140c0a; --bg2:#1d1210; --line:#3a2520; --text:#f6ebe3; --muted:#bfa89c;
   --red:#d9442b; --red2:#b8321f; --ember:#ff8a4c; --cream:#fff3ea;
   --r:18px; --max:1180px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-html{overflow-x:clip}
+html{scroll-behavior:smooth;overflow-x:clip}
 body{background:var(--bg);color:var(--text);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden;overflow-x:clip;
   background-image:repeating-linear-gradient(92deg,transparent 0 46px,rgba(255,255,255,.012) 46px 48px,transparent 48px 97px,rgba(0,0,0,.18) 97px 99px)}
 h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;line-height:1.05;letter-spacing:-.02em}
@@ -105,12 +107,15 @@ section{padding:90px 0}
 .step h3{font-size:22px;margin:10px 0 8px}
 .step p{color:var(--muted);font-size:15px}
 
-.work{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.tile{border-radius:var(--r);border:1px solid var(--line);overflow:hidden;background:var(--bg2)}
+.work{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.tile{display:block;border-radius:var(--r);border:1px solid var(--line);overflow:hidden;background:var(--bg2);transition:border-color .2s}
+a.tile:hover,a.tile:focus-visible{border-color:var(--red)}
+.thumb svg{width:44px;height:44px;color:var(--cream);opacity:.85}
 .thumb{aspect-ratio:4/3;display:grid;place-items:center;color:rgba(255,243,234,.55);font-size:14px;letter-spacing:.1em;text-transform:uppercase}
 .tile:nth-child(1) .thumb{background:linear-gradient(135deg,#3b150c,#b8321f)}
 .tile:nth-child(2) .thumb{background:linear-gradient(135deg,#2a1713,#7a4a33)}
 .tile:nth-child(3) .thumb{background:linear-gradient(135deg,#4a1a10,#ff8a4c)}
+.tile:nth-child(4) .thumb{background:linear-gradient(135deg,#1f0e0b,#d9442b)}
 .tile .meta{padding:18px 20px}
 .tile h3{font-size:19px} .tile p{color:var(--muted);font-size:14px}
 
@@ -149,9 +154,9 @@ footer img{display:block;width:160px;height:auto}
 footer .socials a{padding:9px;border-radius:50%}
 footer .socials span{display:none}
 
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
-.reveal.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.phone .bar b{animation:none;width:40%}}
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}.phone .bar b{animation:none;width:40%}}
 
 @media (max-width:900px){
   .hero,.clipgrid,.contact{grid-template-columns:1fr}
@@ -172,6 +177,10 @@ footer .socials span{display:none}
   .phone{width:150px} .phones{height:340px} .cap{font-size:16px;bottom:50px}
 }
 </style>
+<!-- Analytics placeholder: add GoatCounter or Cloudflare Web Analytics here, and add its host to the CSP script-src/connect-src. -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"RedBarkStudios","url":"https://redbarkstudios.com/","email":"redbarkstudios@gmail.com","logo":"https://redbarkstudios.com/assets/cedar-badge-mark-on-light.png","image":"https://redbarkstudios.com/assets/og-share.png","description":"RedBarkStudios builds fast, sharp websites and cuts long-form content into short-form clips that get views.","sameAs":["https://www.tiktok.com/@clippyton2","https://www.youtube.com/@Clippyton-n2h","https://www.instagram.com/clippyton/"]}
+</script>
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
@@ -305,11 +314,12 @@ footer .socials span{display:none}
 
   <section id="work">
     <div class="wrap">
-      <div class="head reveal"><span class="eyebrow">Work</span><h2>Recent projects.</h2><p>A selection of sites and clips. Full portfolio available on request.</p></div>
+      <div class="head reveal"><span class="eyebrow">Work</span><h2>See the work live.</h2><p>My clips run on the channels below, and this site is my own build. Full portfolio available on request.</p></div>
       <div class="work">
-        <div class="tile reveal"><div class="thumb">Website project</div><div class="meta"><h3>Project title</h3><p>Web design · Add your project here</p></div></div>
-        <div class="tile reveal"><div class="thumb">Clip campaign</div><div class="meta"><h3>Project title</h3><p>Clipping · Add your project here</p></div></div>
-        <div class="tile reveal"><div class="thumb">Landing page</div><div class="meta"><h3>Project title</h3><p>Web design · Add your project here</p></div></div>
+        <a class="tile reveal" href="https://www.tiktok.com/@clippyton2" target="_blank" rel="noopener"><div class="thumb"><svg aria-hidden="true"><use href="#i-tt"/></svg></div><div class="meta"><h3>TikTok</h3><p>Clipping · Captioned 9:16 clips</p></div></a>
+        <a class="tile reveal" href="https://www.youtube.com/@Clippyton-n2h" target="_blank" rel="noopener"><div class="thumb"><svg aria-hidden="true"><use href="#i-yt"/></svg></div><div class="meta"><h3>YouTube Shorts</h3><p>Clipping · Short-form cuts</p></div></a>
+        <a class="tile reveal" href="https://www.instagram.com/clippyton/" target="_blank" rel="noopener"><div class="thumb"><svg aria-hidden="true"><use href="#i-ig"/></svg></div><div class="meta"><h3>Instagram Reels</h3><p>Clipping · Reels</p></div></a>
+        <a class="tile reveal" href="/"><div class="thumb">redbarkstudios.com</div><div class="meta"><h3>This website</h3><p>Web design · Designed and built by RedBarkStudios</p></div></a>
       </div>
     </div>
   </section>
@@ -336,7 +346,7 @@ footer .socials span{display:none}
           <p>Tell me a bit about your project and I'll get back to you within a day.</p>
           <p style="color:var(--text);display:flex;align-items:center;gap:8px"><svg aria-hidden="true" width="18" height="18" style="flex:none;color:var(--ember)"><use href="#i-mail"/></svg><a href="mailto:redbarkstudios@gmail.com" id="email">redbarkstudios@gmail.com</a></p>
           <div class="follow">
-            <p>Follow my clips</p>
+            <p>RedBarkStudios — clips by Clippyton</p>
             <div class="socials">
               <a href="https://www.tiktok.com/@clippyton2" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tt"/></svg><span>TikTok</span></a>
               <a href="https://www.instagram.com/clippyton/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg><span>Instagram</span></a>
@@ -361,6 +371,7 @@ footer .socials span{display:none}
           <label>Quick check: what is <span id="hq"></span>?<input id="human" inputmode="numeric" autocomplete="off" required style="max-width:120px"></label>
           <button class="btn btn-red" type="submit" style="justify-self:start">Send message →</button>
           <p id="formStatus" role="status" aria-live="polite"></p>
+<p style="font-size:13px;color:var(--muted)">Submissions are sent through FormSubmit to my inbox and used only to reply to you.</p>
         </form>
       </div>
     </div>
@@ -371,7 +382,7 @@ footer .socials span{display:none}
   <div class="wrap">
     <img src="assets/cedar-rings-lockup-on-dark.svg" alt="RedBarkStudios">
     <span>© <span id="yr"></span> RedBarkStudios. All rights reserved.</span>
-    <span>Web design & short-form clipping</span>
+    <span>Web design &amp; short-form clipping · clips by Clippyton</span>
     <div class="socials">
       <a href="https://www.tiktok.com/@clippyton2" target="_blank" rel="noopener" aria-label="TikTok @clippyton2"><svg aria-hidden="true"><use href="#i-tt"/></svg><span>TikTok</span></a>
       <a href="https://www.instagram.com/clippyton/" target="_blank" rel="noopener" aria-label="Instagram @clippyton"><svg aria-hidden="true"><use href="#i-ig"/></svg><span>Instagram</span></a>
@@ -387,8 +398,13 @@ const menuBtn=document.getElementById('menu');
 const setMenu=open=>{links.classList.toggle('open',open);menuBtn.setAttribute('aria-expanded',open);menuBtn.setAttribute('aria-label',open?'Close menu':'Open menu')};
 menuBtn.onclick=()=>setMenu(!links.classList.contains('open'));
 links.querySelectorAll('a').forEach(a=>a.onclick=()=>setMenu(false));
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const reveals=document.querySelectorAll('.reveal');
+const showAll=()=>reveals.forEach(el=>el.classList.add('in'));
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:0,rootMargin:'0px 0px -5% 0px'});
+  reveals.forEach(el=>io.observe(el));
+  setTimeout(showAll,2500);
+}else showAll();
 // Sends to FormSubmit's AJAX endpoint. Bot checks: honeypot, minimum fill time, and a random sum.
 const form=document.getElementById("form"),fstat=document.getElementById("formStatus"),human=document.getElementById("human"),hq=document.getElementById("hq");
 const loaded=Date.now();let ans;
