@@ -229,7 +229,7 @@
             <select name="service"><option>Website</option><option>Landing page</option><option>Clipping / clip pack</option><option>Custom multimedia</option><option>Monthly plan</option><option>Something else</option></select>
           </label>
           <label>Project details<textarea name="message" required placeholder="Links, goals, timeline, budget…"></textarea></label>
-          <label>Quick check: what is <span id="hq"></span>?<input id="human" inputmode="numeric" autocomplete="off" required style="max-width:120px"></label>
+          <label id="humanCheck" hidden>Quick check: what is <span id="hq"></span>?<input id="human" inputmode="numeric" autocomplete="off" style="max-width:120px"></label>
           <button class="btn btn-red" type="submit" style="justify-self:start">Send message →</button>
           <p id="formStatus" role="status" aria-live="polite"></p>
 <p style="font-size:13px;color:var(--muted)">Submissions are sent through FormSubmit to my inbox and used only to reply to you. <a href="/privacy.html" style="text-decoration:underline">Privacy policy</a></p>
@@ -256,6 +256,7 @@
 <script>
 // Sends to FormSubmit's AJAX endpoint. Bot checks: honeypot, minimum fill time, and a random sum.
 const form=document.getElementById("form"),fstat=document.getElementById("formStatus"),human=document.getElementById("human"),hq=document.getElementById("hq");
+document.getElementById('humanCheck').hidden=false;human.required=true;
 const loaded=Date.now();let ans;
 function newQ(){const a=2+Math.floor(Math.random()*8),b=2+Math.floor(Math.random()*8);ans=a+b;hq.textContent=a+' + '+b;human.value=''}
 newQ();
@@ -270,7 +271,7 @@ form.onsubmit=async e=>{
     const fd=new FormData(form);
     const r=await fetch('https://formsubmit.co/ajax/redbarkstudios@gmail.com',{method:'POST',headers:{Accept:'application/json'},body:fd});
     const j=await r.json().catch(()=>({}));
-    if(r.ok&&String(j.success)==='true'){say('ok',"Thanks — your message is in. I'll reply within a day.");form.reset();newQ()}
+    if(r.ok&&String(j.success)==='true'){say('ok',"Thanks — your message was submitted. If you don't hear back, please email redbarkstudios@gmail.com.");form.reset();newQ()}
     else say('err',(j.message?j.message+' ':'Something went wrong. ')+'You can also email redbarkstudios@gmail.com directly.');
   }catch(_){say('err','Could not send. Please email redbarkstudios@gmail.com directly.')}
   btn.disabled=false;
